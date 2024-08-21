@@ -31,25 +31,25 @@ class Client implements ClientInterface
         $this->streamFactory = Psr17FactoryDiscovery::findStreamFactory();
     }
 
-    /** @param array<string, string|null> $queryParams */
+    /** @param array<string, scalar|null> $queryParams */
     public function get(string $path, array $queryParams, int $retryCount = 0): string
     {
         return $this->request('GET', $path, $queryParams, null, $retryCount);
     }
 
-    /** @param array<string, string|null> $queryParams */
+    /** @param array<string, scalar|null> $queryParams */
     public function post(string $path, array $queryParams, object $body, int $retryCount = 0): string
     {
         return $this->request('POST', $path, $queryParams, $body, $retryCount);
     }
 
-    /** @param array<string, string|null> $queryParams */
+    /** @param array<string, scalar|null> $queryParams */
     public function delete(string $path, array $queryParams, int $retryCount = 0): string
     {
         return $this->request('DELETE', $path, $queryParams, null, $retryCount);
     }
 
-    /** @param array<string, string|null> $queryParams */
+    /** @param array<string, scalar|null> $queryParams */
     private function request(string $method, string $path, array $queryParams, ?object $body, int $retryCount = 0): string
     {
         $uri = self::BaseUri . $path;
