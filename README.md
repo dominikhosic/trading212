@@ -26,9 +26,24 @@ More endpoints will be covered in future versions.
 
 ### Instruments Metadata
 
-* Exchange List        ✅
-* Instrument List      ✅
+* GET Exchange List        ✅
+* GET Instrument List      ✅
 
+### Pies
+
+* GET Fetch all pies       ✅
+* POST Create pie          ✅
+* DELETE Delete pie        ✅
+* GET Fetch a pie          ✅
+* POST Update pie          ✅
+
+### Historical items
+
+* GET Historical order data ✅
+* GET Paid out dividends    ✅
+* GET Exports List          ✅
+* POST Export csv           ✅
+* GET Transaction list      ✅
 
 ## Notice
 This is NOT an official Trading212 library, and the authors of this library are not affiliated with Trading212 in any way, shape or form.
