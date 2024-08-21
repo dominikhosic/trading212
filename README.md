@@ -13,9 +13,10 @@ composer require marekskopal/trading212
 
 ```php
 use MarekSkopal\Trading212\Trading212;
+use MarekSkopal\Trading212\Config\Config;
 
 // Create Trading212 instance
-$trading212 = new Trading212('<yourApiKey>');
+$trading212 = new Trading212(new Config('<yourApiKey>'));
 
 // Get exchange list
 $response = $trading212->getInstrumentsMetadata()->exchangeList();
@@ -36,6 +37,23 @@ More endpoints will be covered in future versions.
 * DELETE Delete pie        ✅
 * GET Fetch a pie          ✅
 * POST Update pie          ✅
+
+### Equity Orders
+* GET Fetch all              ✅
+* POST Place Limit order     ✅
+* POST Place Market order    ✅
+* POST Place Stop order      ✅
+* POST Place StopLimit order ✅
+* DELETE Cancel by ID        ✅
+* GET Fetch by ID            ✅
+
+### Account Data
+* GET Fetch account cash     ✅
+* GET Fetch account metadata ✅
+
+### Personal Portfolio
+* GET Fetch all open positions  ✅
+* GET Fetch a specific position ✅
 
 ### Historical items
 
