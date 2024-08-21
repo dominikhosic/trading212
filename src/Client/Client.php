@@ -17,6 +17,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 class Client implements ClientInterface
 {
     private const string BaseUri = 'https://live.trading212.com';
+    private const string DemoBaseUri = 'https://demo.trading212.com';
 
     private readonly \Psr\Http\Client\ClientInterface $httpClient;
 
@@ -52,7 +53,7 @@ class Client implements ClientInterface
     /** @param array<string, scalar|null> $queryParams */
     private function request(string $method, string $path, array $queryParams, ?object $body, int $retryCount = 0): string
     {
-        $uri = self::BaseUri . $path;
+        $uri = $this->getBaseUri() . $path;
 
         if (count($queryParams) > 0) {
             $uri .= '?' . http_build_query($queryParams);
@@ -102,5 +103,10 @@ class Client implements ClientInterface
             ->withHeader('User-Agent', 'marekskopal/trading212-client:1.0.0')
             ->withHeader('Authorization', $this->config->apiKey)
             ->withHeader('Content-Type', 'application/json');
+    }
+
+    private function getBaseUri(): string
+    {
+        return $this->config->demo ? self::DemoBaseUri : self::BaseUri;
     }
 }
