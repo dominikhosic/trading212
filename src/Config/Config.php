@@ -11,7 +11,6 @@ readonly class Config
         public bool $demo = false,
         public int $tooManyRequestsRepeat = 6,
         public int $tooManyRequestsWaitTime = 10,
-    )
-    {
+    ) {
     }
 }

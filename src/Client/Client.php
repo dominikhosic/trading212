@@ -16,8 +16,8 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class Client implements ClientInterface
 {
-    private const string BaseUri = 'https://live.trading212.com';
-    private const string DemoBaseUri = 'https://demo.trading212.com';
+    private const BaseUri = 'https://live.trading212.com';
+    private const DemoBaseUri = 'https://demo.trading212.com';
 
     private readonly \Psr\Http\Client\ClientInterface $httpClient;
 
