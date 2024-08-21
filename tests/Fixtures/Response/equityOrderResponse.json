@@ -1,0 +1,14 @@
+{
+    "creationTime": "2019-08-24T14:15:22Z",
+    "filledQuantity": 0,
+    "filledValue": 0,
+    "id": 0,
+    "limitPrice": 0,
+    "quantity": 0,
+    "status": "LOCAL",
+    "stopPrice": 0,
+    "strategy": "QUANTITY",
+    "ticker": "AAPL_US_EQ",
+    "type": "LIMIT",
+    "value": 0
+}
