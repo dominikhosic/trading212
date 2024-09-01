@@ -40,7 +40,7 @@ class Trading212
         return $this->instrumentsMetadata;
     }
 
-    private function getPies(): Pies
+    public function getPies(): Pies
     {
         if (isset($this->pies)) {
             return $this->pies;
@@ -51,7 +51,7 @@ class Trading212
         return $this->pies;
     }
 
-    private function getEquityOrders(): EquityOrders
+    public function getEquityOrders(): EquityOrders
     {
         if (isset($this->equityOrders)) {
             return $this->equityOrders;
@@ -62,7 +62,7 @@ class Trading212
         return $this->equityOrders;
     }
 
-    private function getAccountData(): AccountData
+    public function getAccountData(): AccountData
     {
         if (isset($this->accountData)) {
             return $this->accountData;
@@ -73,7 +73,7 @@ class Trading212
         return $this->accountData;
     }
 
-    private function getPersonalPortfolio(): PersonalPortfolio
+    public function getPersonalPortfolio(): PersonalPortfolio
     {
         if (isset($this->personalPortfolio)) {
             return $this->personalPortfolio;
@@ -84,7 +84,7 @@ class Trading212
         return $this->personalPortfolio;
     }
 
-    private function getHistoricalItems(): HistoricalItems
+    public function getHistoricalItems(): HistoricalItems
     {
         if (isset($this->historicalItems)) {
             return $this->historicalItems;
