@@ -6,6 +6,7 @@ namespace MarekSkopal\Trading212\Dto;
 
 use Iterator;
 use MarekSkopal\Trading212\Client\ClientInterface;
+use MarekSkopal\Trading212\Exception\InternalServerErrorException;
 
 /** @template T */
 readonly class Pagination
@@ -70,7 +71,13 @@ readonly class Pagination
             return;
         }
 
-        $response = $this->client->get($this->nextPagePath, []);
+        try {
+            $response = $this->client->get($this->nextPagePath, []);
+        } catch (InternalServerErrorException) {
+            // current Trading 212 API sometimes returns 500 Internal Server Error
+            return;
+        }
+
         $pagination = self::fromJson($this->client, $this->dtoClass, $response);
 
         yield from $pagination->fetchAll();
