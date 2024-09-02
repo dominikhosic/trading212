@@ -10,7 +10,7 @@ readonly class Export
 {
     public function __construct(
         public DataIncluded $dataIncluded,
-        public string $downloadLink,
+        public ?string $downloadLink,
         public int $reportId,
         public string $status,
         public DateTimeImmutable $timeFrom,
@@ -29,7 +29,7 @@ readonly class Export
          *         includeOrders: bool,
          *         includeTransactions: bool,
          *     },
-         *     downloadLink: string,
+         *     downloadLink: string|null,
          *     reportId: int,
          *     status: string,
          *     timeFrom: string,
@@ -49,7 +49,7 @@ readonly class Export
      *         includeOrders: bool,
      *         includeTransactions: bool,
      *     },
-     *     downloadLink: string,
+     *     downloadLink: string|null,
      *     reportId: int,
      *     status: string,
      *     timeFrom: string,
