@@ -11,6 +11,7 @@ use MarekSkopal\Trading212\Dto\HistoricalItems\Order;
 use MarekSkopal\Trading212\Dto\HistoricalItems\Report;
 use MarekSkopal\Trading212\Dto\HistoricalItems\Transaction;
 use MarekSkopal\Trading212\Dto\Pagination;
+use MarekSkopal\Trading212\Exception\InvalidArgumentException;
 
 class HistoricalItems extends Trading212Api
 {
@@ -59,6 +60,10 @@ class HistoricalItems extends Trading212Api
 
     public function exportCsv(ExportCsv $exportCsv): Report
     {
+        if ($exportCsv->timeTo->diff($exportCsv->timeFrom)->y >= 1) {
+            throw new InvalidArgumentException('The maximum range is 1 year.');
+        }
+
         $response = $this->client->post(
             path: '/api/v0/history/exports',
             queryParams: [],
@@ -72,7 +77,7 @@ class HistoricalItems extends Trading212Api
     public function transactionList(int $limit = 20): Pagination
     {
         $response = $this->client->get(
-            path: '/api/v0/history/dividends',
+            path: '/api/v0/history/transactions',
             queryParams: [
                 'limit' => $limit,
             ],

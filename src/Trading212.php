@@ -18,10 +18,15 @@ class Trading212
     private readonly Client $client;
 
     private InstrumentsMetadata $instrumentsMetadata;
+
     private Pies $pies;
+
     private EquityOrders $equityOrders;
+
     private AccountData $accountData;
+
     private PersonalPortfolio $personalPortfolio;
+
     private HistoricalItems $historicalItems;
 
     public function __construct(Config $config)

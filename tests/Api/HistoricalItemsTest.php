@@ -18,6 +18,7 @@ use MarekSkopal\Trading212\Dto\HistoricalItems\Report;
 use MarekSkopal\Trading212\Dto\HistoricalItems\Tax;
 use MarekSkopal\Trading212\Dto\HistoricalItems\Transaction;
 use MarekSkopal\Trading212\Dto\Pagination;
+use MarekSkopal\Trading212\Exception\InvalidArgumentException;
 use MarekSkopal\Trading212\Tests\Fixtures\Client\ClientFixture;
 use MarekSkopal\Trading212\Trading212;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -99,6 +100,28 @@ final class HistoricalItemsTest extends TestCase
         );
 
         self::assertInstanceOf(Report::class, $exportCsv);
+    }
+
+    public function testExportCsvTwoYears(): void
+    {
+        $historicalItems = new HistoricalItems(ClientFixture::createWithResponse(
+            'exportCsvResponse.json',
+        ));
+
+        self::expectException(InvalidArgumentException::class);
+
+        $historicalItems->exportCsv(
+            new ExportCsv(
+                dataIncluded: new DataIncluded(
+                    includeDividends: true,
+                    includeInterest: true,
+                    includeOrders: true,
+                    includeTransactions: true,
+                ),
+                timeFrom: new DateTimeImmutable('2023-01-01'),
+                timeTo: new DateTimeImmutable('2024-01-01'),
+            ),
+        );
     }
 
     public function testTransactionList(): void
